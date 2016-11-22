@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>日程管理</title>
+		<link rel="stylesheet" href="libs/jquery-ui.min.css" />
+		<link rel="stylesheet" href="libs/jquery-ui.structure.min.css" />
+		<link rel="stylesheet" href="libs/jquery-ui.theme.min.css" />
+		<link rel="stylesheet" href="libs/Font-Awesome/css/font-awesome.min.css"/>
+		
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+	<body>
+		
+		<span id="indicator" class="icon-spinner icon-spin"></span>
+		
+		<div id="main-box">
+			<header>
+				<h1>111111111</h1>
+			  	<div id="date-btn-list">
+				    <input class="date-btn" type="radio" name="date" id="date-btn-1"/>
+				    <label for="date-btn-1">周2</label>
+				    <input class="date-btn" type="radio" name="date" id="date-btn-2" checked/>
+				    <label for="date-btn-2">今天</label>
+				    <input class="date-btn" type="radio" name="date" id="date-btn-3"/>
+				    <label for="date-btn-3">周5</label>
+				    <input class="date-btn" type="radio" name="date" id="date-btn-4"/>
+				    <label for="date-btn-4">周6</label>
+				    <input class="date-btn" type="radio" name="date" id="date-btn-5"/>
+				    <label for="date-btn-5">周7</label>
+				    <input type="radio" name="date" id="date-btn-6"/>
+				    <label for="date-btn-6">选择日期</label>
+			  	</div>
+			  	<p id="incomplete">0项未完成</p>
+			  	<p id="show-complete">显示已完成</p>
+			</header>
+			
+			<main>
+				<ul id="task-list" class="list">
+					<!--template-->
+					<script type="text/html" id="list-tem">
+						{{each models as t}}
+						{{if (!t.get('complete'))||showComplete}}
+						<li>
+							<span class="task-content">{{t.get("content")}}</span>
+							<input type="checkbox" id="{{t.get('id')}}" {{t.get('complete')?'checked':''}}/>
+							<label for="{{t.get('id')}}">
+								<img src="{{t.get('complete')?'img/select.png':'img/unselect.png'}}"/>
+							</label>
+						</li>
+						{{/if}}
+						{{/each}}
+					</script>
+										
+				</ul>
+			</main>
+			
+			<footer class="list">
+				<span id="add-btn" class="icon-plus-sign"></span>
+				
+				<div id="input-box">
+					<input type="text" id="text-field" autocomplete="off" placeholder="请输入任务内容"/>
+					<button id="commit-btn">提交</button>
+				</div>
+			</footer>
+		</div>
+		
+	</body>
+	<!--第三方-->
+	<script src="libs/jquery.min.js"></script>
+	<script src="libs/underscore-min.js"></script>
+	<script src="libs/backbone-min.js"></script>
+	<script src="libs/jquery-ui.min.js"></script>
+	<script src="libs/jquery-ui-datepicker-zh-CN.js"></script>
+	<script src="libs/template.js"></script>
+	<!--工具-->
+	<script src="js/utils.js"></script>
+	<!--model-->
+	<script src="js/model/task.js"></script>
+	<script src="js/model/task-set.js"></script>
+	<!--view-->
+	<script src="js/view/headerView.js"></script>
+	<script src="js/view/mainView.js"></script>
+	<script src="js/view/footerView.js"></script>
+	<!--自己写的js-->
+	<script src="js/index.js"></script>
+	
+</html>

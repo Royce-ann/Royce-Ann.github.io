@@ -1,0 +1,116 @@
+body{
+	margin: 0;
+	background-color: #444444;
+}
+#main-box{
+	width: 600px;
+	margin: 40px auto;
+	background-color: white;
+	border-radius: 20px;
+	box-shadow: 5px 5px 20px black;
+}
+h1{
+	font-size: 28px;
+	margin-top: 0;
+}
+header{
+	padding: 16px;
+	border-bottom: 1px solid black;
+	position: relative;
+}
+#date-btn-list label{
+	font-size: 14px;
+}
+#date-btn-list label span{
+	display: none;
+}
+#incomplete{
+	position: absolute;
+	right: 16px;
+	top: 0;
+	font-size: 20px;
+	color: dimgrey;
+}
+#show-complete{
+	position: absolute;
+	right: 16px;
+	top: 40px;
+	color: grey;
+	cursor: pointer;
+}
+#task-list{
+	min-height: 120px;
+	padding-left: 0;
+	margin: 0;
+}
+#task-list li{
+	list-style: none;
+	height: 60px;
+	line-height: 60px;
+	background-color: white;
+	border-bottom: 1px solid grey;
+	padding: 0 16px;
+}
+#task-list li input{
+	margin-top: 20px;
+	float: right;
+	display: none;
+}
+#task-list li label{
+	line-height: 30px;
+	padding-top: 16px;
+	float: right;
+	cursor: pointer;
+}
+#task-list li label img{
+	width: 30px;
+	height: 30px;	
+}
+footer{
+	height: 60px;
+	text-align: center;
+	border-top: 1px solid black;
+	padding-top: 20px;
+}
+#add-btn{
+	font-size: 40px;
+	color: #007FFF;
+	cursor: pointer;
+}
+#text-field{
+	width: 75%;
+	height: 40px;
+	border-radius: 5px;
+	border: 1px solid lightgrey;
+	padding-left: 10px;
+	font-size: 20px;
+	color: deepskyblue;
+}
+#commit-btn{
+	width: 15%;
+	height: 40px;
+	position: relative;
+	top: -4px;
+	color: #43AAD0;
+}
+.task-placeholder{
+	background-color: yellow!important;
+}
+
+footer .task-placeholder{
+	display: none;
+}
+
+
+#main-box{
+	display: none;
+}
+
+#indicator{
+	font-size: 40px;
+	color: white;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50% -50%);
+}
