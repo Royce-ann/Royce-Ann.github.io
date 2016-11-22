@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="libs/Font-Awesome/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="css/index.css"/>
+	</head>
+	<body ng-app="myAPP">
+		<header ng-controller="headerCtrl">
+			<!--顶头横条-->
+			<div id="header-box">
+				<span>优质生活，优质服务</span>
+				<span id="lar">			
+					<a class="login" href="login.html" ng-show="notLogin"><span>登录</span></a>
+					<a href="signup.html" ng-show="notLogin"><span>注册</span></a>
+					<span ng-show="!notLogin">您好:</span>
+					<a href="" ng-if="!notLogin"><span ng-bind='username'></span></a>
+					<a href="" ng-show="!notLogin" ng-click="logOut()"><span>退出登录</span></a>
+					<a id="tel" href=""><span class="icon-tablet"></span>手机APP</a>
+				</span>
+			</div>
+			<!--自动播放广告-->
+			<div class="imgList" ng-controller="guangCtrl">
+				<a ng-repeat="g in gArr" href=""><img ng-src="{{g}}"/></a>
+			</div>	
+			<!--logo和搜索-->
+			<div id="shopping">
+				<div id="logo-box">
+					<a href="#"><img src="images/logo.gif"/></a>
+				</div>
+				<div id="right-box">
+					<div id="search-box">
+						<input type="text" name="search" id="search" placeholder="某某商品打折"/>
+						<span class="icon-search"></span>
+					</div>
+					<div id="cart">
+						<span class="icon-shopping-cart icon-2x"></span>
+					</div>
+				</div>
+			</div>
+			<!--导航条菜单列表-->
+			<div id="menu-box">
+				<div id="menu-all">
+					<!--所有商品列表-->
+					<div class="tit_all">
+						<a href="">所有商品分类&emsp;
+							<span class=" icon-angle-down icon-large"></span>
+						</a>
+					</div>
+					<div class="tit_list" ng-controller="productCtrl">						
+						<dl ng-repeat="p in pArr" ng-mouseenter="show = true" ng-mouseleave="show = false" ng-init="outerIndex = $index">
+							<dt class="tit_name">
+								<span class="{{p.iconLei}} markleft"></span>
+								<a href="">{{p.titName}}</a>
+								<span class="icon-angle-right icon-large markright"></span>
+							</dt>
+							<dd ng-show="show">
+								<div class="content-list">
+									<ul ng-repeat="l in p.contentList track by $index" ng-init="innerIndex = $index">
+										<li>
+											<div class="list_l"><a href="">{{l.listL}}</a></div>
+											<div class="list_r" >
+												<a href="" ng-repeat="r in l.listR track by $index">{{r}}</a>
+											</div>
+										</li>										
+									</ul>
+								</div>
+							</dd>
+						</dl>																	
+					</div>										
+				</div>
+				<div id="menu-list">
+					<ul>
+						<li><a href="">首页</a></li>
+						<li><a href="">全国配</a></li>
+						<li><a href="">每日鲜</a></li>
+						<li><a href="">礼品区</a></li>
+						<li><a href="">兑换区</a></li>
+						<li><a href="">促销</a></li>
+						<li><a href="">充值</a></li>
+					</ul>
+				</div>				
+			</div>
+									
+		</header>
+		
+		<div id="main" ng-controller="mainCtrl">
+			
+			<!--大图轮播-->
+			<div class="center">
+				
+				<div class="content_middle">					
+					<div class="common_da">
+						<span class="common btnLeft"></span>
+						<span class="common btnRight"></span>		
+					</div>
+					<ul>
+						<li style="background:url(images/lunbo1.jpg) no-repeat center center;opacity: 100;filter: alpha(opacity=1);"></li>
+						<li style="background:url(images/lunbo2.jpg) no-repeat center center;"></li>
+						<li style="background:url(images/lunbo3.jpg) no-repeat center center;"></li>
+						<li style="background:url(images/lunbo4.jpg) no-repeat center center;"></li>
+						<li style="background:url(images/lunbo5.jpg) no-repeat center center;"></li>							
+					</ul>		
+					<div class="table">
+						<span class="small_active">智利车厘子128元1kg</span>
+						<span>智利车厘子128元1kg</span>
+						<span>智利车厘子128元1kg</span>
+						<span>智利车厘子128元1kg</span>
+						<span>智利车厘子128元1kg</span>			 
+					</div>					
+				</div>					
+
+			</div>
+			
+			<div class="gg-box" ng-controller="ggCtrl">
+				<ul>
+					<li ng-repeat="gg in ggArr"><a href=""><img ng-src="{{gg}}"/></a></li>
+				</ul>
+			</div>
+			
+			<div class="clear"></div>
+			
+			<div class="newthings samelist">
+				<div class="n-list">
+					<dl>
+						<dt class="handle handle-1 active"><a href="">新品上线</a></dt>
+						<dd class="handle-box handle-box-1">
+							<ul class="sameul">
+								<li show-css ng-repeat="list1 in arrList1" >
+									<a href=""><img ng-src="{{list1.imgSrc}}"/></a>
+									<p class="proName"><a href="">{{list1.proName}}</a></p>
+									<p class="price">￥{{list1.price}}<del>{{list1.delPrice}}</del></p>
+									<a href=""><span class="icon-shopping-cart">加入购物车</span></a>
+								</li>								
+							</ul>
+						</dd>										
+					</dl>
+					<div class="clear"></div>
+					<dl>
+						<dt class="handle handle-2"><a href="">好评如潮</a></dt>
+						<dd class="handle-box handle-box-2">
+							<ul class="sameul">
+								<li show-css ng-repeat="list2 in arrList2">
+									<a href=""><img ng-src="{{list2.imgSrc}}"/></a>
+									<p><a href="">{{list2.proName}}</a></p>
+									<p class="price">￥{{list2.price}}<del>{{list2.delPrice}}</del></p>
+									<a href=""><span class="icon-shopping-cart">加入购物车</span></a>
+								</li>											
+							</ul>
+						</dd>			
+					</dl>		
+				</div>				
+			</div>			
+			<div class="clear"></div>
+			
+			<!--热卖-->
+			<div class="hotSale samelist">				
+				<div class="leftlist">
+					<div class="leftlist-header">
+						<span class="icon-hand-right icon-large"></span>
+						<span>限时抢购</span>
+					</div>
+					<div class="leftlist-last" >			    
+						<p>距离结束还剩</p>
+						<div>
+							<span id="sethour" class="settime">00</span>
+							<span>时</span>
+							<span id="setminute" class="settime">00</span>
+							<span>分</span>
+						</div>
+					</div>
+				</div>				
+				<ul class="rightlist sameul">
+					<li show-css ng-repeat="list3 in arrList3">
+						<a href=""><img ng-src="{{list3.imgSrc}}"/></a>
+						<p class="proName"><a href="">{{list3.proName}}</a></p>
+						<p class="price">￥{{list3.price}}<del>{{list3.delPrice}}</del></p>
+						<a href=""><span class="icon-shopping-cart">加入购物车</span></a>
+					</li>		
+				</ul>				
+			</div>
+			
+			<!--类-->
+			<div class="salelei">
+				<div class="cha-gg">
+					<a href=""><img src="images/lei1.jpg"/></a>
+				</div>				
+				<div class="lei-main">					
+					<div class="lei-left">
+						<p>
+							<span><img src="images/bigIcon1.png"/></span>
+							<span>进店必买</span>
+						</p>
+						<div>
+							<a href=""><img src="images/leizh1.jpg"/></a>							
+						</div>
+						<div class="left-ft">
+							<ul>
+								<li><a href="">佳沛金果</a></li>
+								<li><a href="">新鲜蔬菜</a></li>
+								<li><a href="">豆制品</a></li>
+								<li><a href="">新鲜蔬菜</a></li>
+								<li><a href="">佳沛金果</a></li>
+								<li><a href="">新鲜蔬菜</a></li>
+								<li><a href="">佳沛金果</a></li>
+								<li><a href="">新鲜蔬菜</a></li>
+							</ul>
+						</div>							
+					</div>					
+					<div class="lei-right">						
+						<div class="select-item">
+							<span class="slc-atv">Top热卖</span>							
+						</div>					
+						<div class="select-ct">
+							<ul>								
+								<li ng-repeat="ml1 in arrMl1" show-con>
+									<a href=""><img ng-src="{{ml1.imgSrc}}"/></a>
+									<p><a href="">
+										<span class="proName">{{ml1.proName}}</span>
+										<small>{{ml1.smallName}}</small>
+									</a></p>
+									<p class="price">￥{{ml1.price}}<del>{{ml1.delPrice}}</del></p>
+									<a href=""><span class="icon-shopping-cart">加入购物车</span></a>
+								</li>						
+							</ul>							
+						</div>						
+					</div>					
+				</div>				
+			</div>
+			
+			<div class="salelei">
+				<div class="cha-gg">
+					<a href=""><img src="images/lei2.jpg"/></a>
+				</div>				
+				<div class="lei-main">
+					
+					<div class="lei-left">
+						<p>
+							<span><img src="images/bigIcon2.png"/></span>
+							<span>进店必买</span>
+						</p>
+						<div>
+							<a href=""><img src="images/leizh2.jpg"/></a>							
+						</div>
+						<div class="left-ft">
+							<ul>
+								<li><a href="">佳沛金果</a></li>
+								<li><a href="">新鲜蔬菜</a></li>
+								<li><a href="">豆制品</a></li>
+								<li><a href="">新鲜蔬菜</a></li>
+								<li><a href="">佳沛金果</a></li>
+								<li><a href="">新鲜蔬菜</a></li>
+								<li><a href="">佳沛金果</a></li>
+								<li><a href="">新鲜蔬菜</a></li>
+							</ul>
+						</div>							
+					</div>					
+					<div class="lei-right">
+						
+						<div class="select-item">
+							<span class="slc-atv">Top热卖</span>							
+						</div>					
+						<div class="select-ct">
+							<ul>
+								<li ng-repeat="ml2 in arrMl1" show-con>
+									<a href=""><img ng-src="{{ml2.imgSrc}}"/></a>
+									<p><a href="">
+										<span class="proName">{{ml2.proName}}</span>
+										<small>{{ml2.smallName}}</small>
+									</a></p>
+									<p class="price">￥{{ml2.price}}<del>{{ml2.delPrice}}</del></p>
+									<a href=""><span class="icon-shopping-cart">加入购物车</span></a>
+								</li>									
+							</ul>						
+						</div>						
+					</div>					
+				</div>				
+			</div>
+			
+			<div class="foot-gg">
+				<a href=""><img src="images/footguang1.jpg"/></a>
+				<a href=""><img src="images/footguang2.jpg"/></a>
+			</div>			
+			
+			<!--左侧返回顶部列表-->
+			<div class="left-sidebar" left-back-to-top>
+				<ul>
+					<li id="#left-goTop" go-top>
+						<a href=""><span class="icon-angle-up icon-2x"></span></a>
+					</li>
+					<li><a href="">水果</a></li>
+					<li><a href="">蔬菜</a></li>
+					<li><a href="">海鲜</a></li>
+				</ul>
+			</div>
+			
+		</div>
+		
+		<footer>
+			
+			<div class="fpart-h">
+				<ul>
+					<li>
+						<div>
+							<span class="icon-cloud"></span>
+						</div>
+						<p>
+							<span>18小时低温</span>
+							<small>全程冷链配送</small>
+						</p>
+					</li>
+					<li>
+						<div>
+							<span class="icon-time"></span>
+						</div>
+						<p>
+							<span>0时差基地直供</span>
+							<small>农田到餐桌</small>
+						</p>
+					</li>
+					<li>
+						<div>
+							<span class="icon-search"></span>
+						</div>
+						<p>
+							<span>43项检测</span>
+							<small>安全无农残</small>
+						</p>
+					</li>
+					<li>
+						<div>
+							<span class="icon-calendar"></span>
+						</div>
+						<p>
+							<span>7*24小时营业</span>
+							<small>全年无休</small>
+						</p>
+					</li>					
+					<li>
+						<div>
+							<span class="icon-truck"></span>
+						</div>
+						<p>
+							<span>满60免运费</span>
+							<small>今日下单次日送达</small>
+						</p>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="footer-t">
+				<dl>
+					<dt>
+						<span class="icon-paper-clip"></span>
+						<span>新手指南</span>
+					</dt>
+					<dd><a href="">购物流程</a></dd>
+					<dd><a href="">会员政策</a></dd>
+					<dd><a href="">联系客服</a></dd>
+					<dd><a href="">积分政策</a></dd>
+					<dd><a href="">加入我们</a></dd>
+				</dl>
+				<dl>
+					<dt>
+						<span class="icon-truck"></span>
+						<span>配送方式</span>						
+					</dt>
+					<dd><a href="">全程冷链</a></dd>
+					<dd><a href="">配送时间</a></dd>
+					<dd><a href="">配送范围</a></dd>
+					<dd><a href="">配送收费标准</a></dd>
+					<dd><a href="">关于我们</a></dd>
+				</dl>
+				<dl>
+					<dt>
+						<span class="icon-tags"></span>
+						<span>支付方式</span>
+					</dt>
+					<dd><a href="">在线支付</a></dd>
+					<dd><a href="">其他支付方式</a></dd>
+					<dd><a href="">优惠券使用</a></dd>
+					<dd><a href="">礼金卡使用</a></dd>
+				</dl>
+				<dl>
+					<dt>
+						<span class="icon-tag"></span>
+						<span>售后服务</span>
+					</dt>
+					<dd><a href="">验货与拒收政策</a></dd>
+					<dd><a href="">退换货政策</a></dd>
+					<dd><a href="">退换货流程</a></dd>
+					<dd><a href="">退款流程</a></dd>
+					<dd><a href="">发票制度</a></dd>
+				</dl>
+			</div>
+			<div class="clear"></div>
+			<div class="footer-l">
+				<div><span class="icon-phone"> 客服热线：4008-000-917(周一至周日 8:00-20:00)</span></div>
+				<div>
+						<span><a href="">加入我们</a></span>
+						<span><a href="">联系我们</a></span>
+						<span><a href="">关于我们</a></span>
+						<span><a href="">友情链接</a></span>
+						<span><a href="">品牌食材</a></span>
+						<span><a href="">食品流通许可证</a></span>
+						<span><a href="">营业执照</a></span>
+				</div>
+				<div>
+					<img src="images/jingbei.png"/>
+					<span><a href="">京公网安备 11010502022386号</a></span>
+					<span>|</span>
+					<span><a href="">京ICP证120338号</a></span>
+				</div>
+				<div>© 2012-2016 Benlai.com. All Rights Reserved. 北京本来工坊科技有限公司</div>
+				<div><img src="images/verifyseal.jpg.png"/></div>
+			</div>
+		</footer>
+				
+		<!--右下角返回顶部-->
+		<div class="right-toTop">
+			<ul>  
+				<li back-to-top><a href="">
+					<span class="icon-chevron-up icon-2x"></span>
+				</a></li>
+				<li><a href="">
+					<span class="icon-shopping-cart icon-2x"></span>
+					<span>结算</span>
+				</a></li>
+				<li><a href="">
+					<span class="icon-headphones icon-2x"></span>
+					<span>客服</span>
+				</a></li>
+				<li><a href="">
+					<span class="icon-qrcode icon-2x"></span>
+					<span>二维码</span>
+				</a></li>
+			</ul>
+		</div>
+			
+	</body>
+	<script src="libs/jquery.js"></script>
+	<script src="libs/angular/angular.js"></script>
+	<script src="libs/angular/angular-animate.js"></script>
+	<script src="libs/angular/angular-cookies.js"></script>
+	<script src="js/index.js"></script>
+</html>

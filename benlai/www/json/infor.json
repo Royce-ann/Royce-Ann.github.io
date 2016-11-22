@@ -1,0 +1,118 @@
+{
+	"list1":[
+	   {
+		"imgSrc":"images/tb1.jpg",
+		"proName":"午餐肉罐头",
+		"price":"188.00",
+		"delPrice":"￥210.00"
+	   },
+	   {
+		"imgSrc":"images/tb2.jpg",
+		"proName":"阿米小厨 麻辣牛肉",
+		"price":"105.00",
+		"delPrice":"￥140.00"
+	   },
+	   {
+		"imgSrc":"images/tb3.jpg",
+		"proName":"阿米小厨 麻辣牛肉",
+		"price":"188.00",
+		"delPrice":""
+	   },
+	   {
+		"imgSrc":"images/tb4.jpg",
+		"proName":"阿米小厨 麻辣牛肉",
+		"price":"188.00",
+		"delPrice":"￥210.00"
+	   },
+	   {
+		"imgSrc":"images/tb5.jpg",
+		"proName":"阿米小厨 麻辣牛肉",
+		"price":"188.00",
+		"delPrice":""
+	   },
+	   {
+		"imgSrc":"images/tb6.jpg",
+		"proName":"阿米小厨 麻辣牛肉",
+		"price":"188.00",
+		"delPrice":"￥210.00"
+	   }
+	],
+	"list2":[
+	   {
+		"imgSrc":"images/tb6.jpg",
+		"proName":"阿米小厨 麻辣牛肉",
+		"price":"188.00",
+		"delPrice":"￥210.00"
+	   },
+	   {
+		"imgSrc":"images/tb5.jpg",
+		"proName":"阿米小厨 麻辣牛肉",
+		"price":"188.00",
+		"delPrice":"￥210.00"
+	   },
+	   {
+		"imgSrc":"images/tb4.jpg",
+		"proName":"阿米小厨 麻辣牛肉",
+		"price":"188.00",
+		"delPrice":"￥210.00"
+	   },
+	   {
+		"imgSrc":"images/tb3.jpg",
+		"proName":"阿米小厨 麻辣牛肉",
+		"price":"188.00",
+		"delPrice":"￥210.00"
+	   },
+	   {
+		"imgSrc":"images/tb2.jpg",
+		"proName":"阿米小厨 麻辣牛肉",
+		"price":"188.00",
+		"delPrice":"￥210.00"
+	   },
+	   {
+		"imgSrc":"images/tb1.jpg",
+		"proName":"阿米小厨 麻辣牛肉",
+		"price":"188.00",
+		"delPrice":""
+	   }
+	],
+	"list3":[
+  	   {
+  		"imgSrc":"images/hot1.jpg",
+  		"proName":"潮庭香菇贡丸250g",
+  		"price":"19.00",
+  		"delPrice":"￥22.00"
+  	   },
+  	   {
+  		"imgSrc":"images/hot2.jpg",
+  		"proName":"阿米小厨 麻辣牛肉",
+  		"price":"188.00",
+  		"delPrice":"￥210.00"
+  	   },
+  	   {
+  		"imgSrc":"images/hot3.jpg",
+  		"proName":"阿米小厨 麻辣牛肉",
+  		"price":"188.00",
+  		"delPrice":"￥210.00"
+  	   },
+  	   {
+  		"imgSrc":"images/hot4.jpg",
+  		"proName":"阿米小厨 麻辣牛肉",
+  		"price":"188.00",
+  		"delPrice":"￥210.00"
+  	   },
+  	   {
+  		"imgSrc":"images/hot5.jpg",
+  		"proName":"阿米小厨 麻辣牛肉",
+  		"price":"188.00",
+  		"delPrice":"￥210.00"
+  	   },
+  	   {
+  		"imgSrc":"images/hot6.jpg",
+  		"proName":"阿米小厨 麻辣牛肉",
+  		"price":"188.00",
+  		"delPrice":""
+  	   }
+  	]
+	
+
+}

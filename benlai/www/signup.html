@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="libs/Font-Awesome/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="css/header.css"/>
+		<title>注册</title>
+		<style>
+			*{
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			#signup-page{
+				width: 100%;
+				height: 800px;
+				padding: 0 300px;
+				position: absolute;
+				top: 248px;
+				left: 0;		
+			}
+			#zhuce{
+				font-size: 14px;
+				color: #959595;
+				height: 40px;
+				line-height: 40px;
+			}		
+			#zhuce	a{
+				color: #959595;
+			}
+			#zhuce	a:hover{
+				color: red;
+				text-decoration: underline;
+			}
+			#signup-box{
+				width: 400px;
+				height: 550px;
+				padding: 40px 30px 0;
+				border: 1px solid lightgray;
+			}
+			#guanggao{
+				display: inline-block;
+				position: absolute;
+				top: 40px;
+				left: 900px;
+			}
+			.color-a{
+				color: #B1CE75;
+			}
+			.color-a:hover{
+				text-decoration: underline;
+			}
+			/*signup-box*/			
+			#signup-header{
+				margin-bottom: 30px;
+				font-size: 20px;
+				color: #333333;
+			}
+			#signup-header .icon-tablet{
+				margin-right: 10px;
+			}
+			.signup-input{
+				height: 40px;
+				line-height: 40px;
+				margin-bottom: 25px;
+				font-size: 14px;
+				width: 100%;
+				border: 1px solid lightgray;
+				padding: 0 10px;
+				position: relative;
+			}
+			.signup-input label{
+				display: inline-block;
+				width: 80px;
+				text-align: center;
+				padding-right: 10px;
+				border-right: 1px solid lightgray;
+			}
+			.signup-input input{
+				border: none;
+			}
+			#signupBtn{
+				width: 100%;
+				border: none;
+				background-color: #FF6900;
+				color: white;
+				font-size: 22px;
+				height: 50px;
+				line-height: 50px;
+				margin: 25px 0 15px;
+				cursor: pointer;
+			}
+			#signup-footer{
+				width: 400px;
+				height: 150px;
+				padding: 20px 30px;
+				border: 1px solid lightgray;
+			}
+			#signup-footer p{
+				margin-bottom: 10px;
+			}
+			#signup-footer ul li{
+				float: left;
+				border: 1px solid lightgray;
+				padding: 5px 2px;
+				width: 80px;
+				margin: 5px;
+				text-align: center;
+				font-size: 14px;	
+				border-radius: 2px;			
+			}
+			#signup-footer ul li a{
+				color: #333333;
+			}
+			#signup-footer ul li a:hover{
+				color: #FF6900;
+			}
+			.fenge{
+				width: 400px;
+				height: 5px;
+				background-color: #F8F8F6;		
+			}
+			/*form部分*/
+			.signup-input span{
+				position: absolute;
+				top: 50%;
+				right: 10px;
+				transform: translateY(-50%);
+				font-size: 22px;
+			}
+			.signup-input span.icon-ok-sign{
+				color: #B1CE75;
+			}
+			.signup-input span.icon-remove-sign{
+				color: #FF6900;
+			}
+		</style>
+	</head>
+	<body ng-app="signUP" ng-controller="ctrl">
+		<!--相同代码区头部-->
+		<div ng-include="'header.html'"></div>
+		
+		<!--注册页面部分-->
+		<div id="signup-page">
+			<div id="zhuce">
+				<a href="index.html">首页</a>
+				<span class="icon-angle-right"></span>
+				<span>注册</span>
+			</div>
+			
+			<div>
+				<div id="signup-box">
+					<div id="signup-header">
+						<span class="icon-mobile-phone icon-2x"></span>
+						<span>手机注册</span>
+					</div>
+					<form  novalidate name="myForm" ng-submit="submit()">
+						<div class="signup-input">						
+							<label for="account">手机号</label>
+							<input required pattern="^1[3|5|7|8]\d{9}$" type="text" ng-model="account" name="account" autocomplete="off" placeholder="请输入手机号"/>
+							<span ng-show="myForm.account.$valid&&myForm.account.$dirty" class="icon-ok-sign"></span>
+							<span ng-show="myForm.account.$invalid&&myForm.account.$dirty" class="icon-remove-sign"></span>
+						</div>
+						<div class="signup-input">
+							<label for="psw">密码</label>
+							<input ng-minlength="1" ng-maxlength="16" required type="password" ng-model="psw" name="psw" autocomplete="off"/>
+							<span ng-show="myForm.psw.$valid&&myForm.psw.$dirty" class="icon-ok-sign"></span>
+							<span ng-show="myForm.psw.$invalid&&myForm.psw.$dirty" class="icon-remove-sign"></span>
+						</div>
+						<div class="signup-input">
+							<label for="confirm">确认密码</label>
+							<input equal-to="psw" required type="password" ng-model="confirm" name="confirm" autocomplete="off"/>
+							<span ng-show="myForm.confirm.$valid&&myForm.confirm.$dirty" class="icon-ok-sign"></span>
+							<span ng-show="myForm.confirm.$invalid&&myForm.confirm.$dirty" class="icon-remove-sign"></span>
+						</div>					
+						
+						<div style="font-size: 14px;">
+							<input type="checkbox" checked/>我已接受小店的
+							<a class="color-a" href="">服务条款</a>
+						</div>
+						
+						<button type="submit" ng-disabled="myForm.$invalid" id="signupBtn">立即注册</button>
+						
+						<div style="text-align: right;font-size: 14px;">
+							<span>已注册？<a class="color-a" href="login.html">立即登录</a></span>
+						</div>
+					</form>					
+				</div>
+				<div>
+					<div class="fenge"></div>
+					<div id="signup-footer">
+						<p>其他方式：</p>
+						<ul>
+							<li class="otherList"><a href="">新浪微博</a></li>
+							<li class="otherList"><a href="">QQ登录</a></li>
+							<li class="otherList"><a href="">支付宝</a></li>
+							<li class="otherList"><a href="">微信登录</a></li>
+							<li class="otherList"><a href="">联通</a></li>
+							<li class="otherList"><a href="">兜里登录</a></li>
+						</ul>
+					</div>
+				</div>
+				<div id="guanggao">
+					<a href=""><img src="images/log-guang.jpg"/></a>
+				</div>
+			</div>
+		</div>
+		
+		<!--相同代码区底部-->
+		
+	</body>
+	<script src="libs/jquery.js"></script>
+	<script src="libs/angular/angular.js"></script>
+	<script src="libs/angular/angular-resource.js"></script>
+	<script src="js/header.js"></script>
+	<script src="js/signup.js"></script>
+	
+</html>
+

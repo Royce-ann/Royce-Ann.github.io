@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="libs/Font-Awesome/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="css/header.css" />
+		<title></title>
+		<style>
+			*{
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			#login-page{
+				width: 100%;
+				height: 800px;
+				padding: 0 300px;
+				position: absolute;
+				top: 248px;
+				left: 0;	
+			}
+			#denglu{
+				font-size: 14px;
+				color: #959595;
+				height: 40px;
+				line-height: 40px;
+			}		
+			#denglu	a{
+				color: #959595;
+			}
+			#denglu	a:hover{
+				color: red;
+				text-decoration: underline;
+			}
+			#login-box{
+				width: 400px;
+				height: 450px;
+				padding: 40px 30px 0;
+				border: 1px solid lightgray;
+			}
+			#guanggao{
+				display: inline-block;
+				position: absolute;
+				top: 40px;
+				left: 900px;
+			}
+			.color-a{
+				color: #B1CE75;
+			}
+			.color-a:hover{
+				text-decoration: underline;
+			}
+			/*login-box*/			
+			#login-header{
+				margin-bottom: 30px;
+				font-size: 20px;
+				color: #333333;
+			}
+			#login-header .icon-user{
+				margin-right: 10px;
+			}
+			.login-input{
+				height: 40px;
+				line-height: 40px;
+				margin-bottom: 25px;
+				font-size: 14px;
+				width: 100%;
+				border: 1px solid lightgray;
+				padding: 0 10px;
+				position: relative;
+			}
+			.login-input label{
+				display: inline-block;
+				width: 80px;
+				text-align: center;
+				padding-right: 10px;
+				border-right: 1px solid lightgray;
+			}
+			.login-input input{
+				border: none;
+			}
+			#loginBtn{
+				width: 100%;
+				border: none;
+				background-color: #FF6900;
+				color: white;
+				font-size: 22px;
+				height: 50px;
+				line-height: 50px;
+				margin: 25px 0 15px;
+				cursor: pointer;
+			}
+			#login-footer{
+				width: 400px;
+				height: 150px;
+				padding: 20px 30px;
+				border: 1px solid lightgray;
+			}
+			#login-footer p{
+				margin-bottom: 10px;
+			}
+			#login-footer ul li{
+				float: left;
+				border: 1px solid lightgray;
+				padding: 5px 2px;
+				width: 80px;
+				margin: 5px;
+				text-align: center;
+				font-size: 14px;	
+				border-radius: 2px;			
+			}
+			#login-footer ul li a{
+				color: #333333;
+			}
+			#login-footer ul li a:hover{
+				color: #FF6900;
+			}
+			.fenge{
+				width: 400px;
+				height: 5px;
+				background-color: #F8F8F6;		
+			}
+			/*form部分*/
+			.login-input span{
+				position: absolute;
+				top: 50%;
+				right: 10px;
+				transform: translateY(-50%);
+				font-size: 22px;
+			}
+			.login-input span.icon-ok-sign{
+				color: #B1CE75;
+			}
+			.login-input span.icon-remove-sign{
+				color: #FF6900;
+			}
+		</style>
+	</head>
+	<body ng-app="loginApp">
+		<!--相同代码区头部-->
+		<div ng-include="'header.html'"></div>
+		
+		<!--登录页面部分-->
+		<div id="login-page"  ng-controller="loginCtrl">
+			<div id="denglu">
+				<a href="index.html">首页</a>
+				<span class="icon-angle-right"></span>
+				<span>登录</span>
+			</div>
+			
+			<div>
+				<div id="login-box">
+					<div id="login-header">
+						<span class="icon-user icon-large"></span>
+						<span>会员登录</span>
+					</div>
+					<form novalidate name="myForm" ng-submit="login()">
+						<div class="login-input">
+							<label for="account">账号</label>
+							<input required pattern="^1[3|5|7|8]\d{9}$" type="text" ng-model="denglu.account" name="account" autocomplete="off" />
+							<span ng-show="myForm.account.$valid&&myForm.account.$dirty" class="icon-ok-sign"></span>
+							<span ng-show="myForm.account.$invalid&&myForm.account.$dirty" class="icon-remove-sign"></span>
+						</div>
+						<div class="login-input">
+							<label for="psw">密码</label>
+							<input ng-minlength="1" ng-maxlength="16" required type="password" ng-model="denglu.psw" name="psw" autocomplete="off"/>
+							<span ng-show="myForm.psw.$valid&&myForm.psw.$dirty" class="icon-ok-sign"></span>
+							<span ng-show="myForm.psw.$invalid&&myForm.psw.$dirty" class="icon-remove-sign"></span>
+						</div>
+						
+						<div style="font-size: 14px;">
+							<input type="checkbox" checked/>记住我
+							<a class="color-a" href="">忘记密码？</a>
+						</div>
+						
+						<button type="submit" ng-disabled="myForm.$invalid" id="loginBtn">立即登录</button>
+						
+						<div style="text-align: right;font-size: 14px;">
+							<span>还不是小店用户？<a class="color-a" href="signup.html">立即注册</a></span>
+						</div>
+					</form>					
+				</div>
+				<div>
+					<div class="fenge"></div>
+					<div id="login-footer">
+						<p>其他方式：</p>
+						<ul>
+							<li class="otherList"><a href="">新浪微博</a></li>
+							<li class="otherList"><a href="">QQ登录</a></li>
+							<li class="otherList"><a href="">支付宝</a></li>
+							<li class="otherList"><a href="">微信登录</a></li>
+							<li class="otherList"><a href="">联通</a></li>
+							<li class="otherList"><a href="">兜里登录</a></li>
+						</ul>
+					</div>
+				</div>
+				<div id="guanggao">
+					<a href=""><img src="images/log-guang.jpg"/></a>
+				</div>
+			</div>
+		</div>
+		
+		<!--相同代码区底部-->
+	
+		
+	</body>	
+	<script src="libs/jquery.js"></script>
+	<script src="libs/angular/angular.js"></script>
+	<script src="libs/angular/angular-cookies.js"></script>
+	<script src="js/header.js"></script>
+	<script src="js/login.js"></script>
+</html>

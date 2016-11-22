@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>头部部件</title>
+	</head>
+	<body ng-app="myAPP">
+		<header ng-controller="headerCtrl">
+			<!--顶头横条-->
+			<div id="header-box">
+				<span>优质生活，优质服务</span>
+				<span id="lar">			
+					<a class="login" href="login.html" ng-show="notLogin"><span>登录</span></a>
+					<a href="signup.html" ng-show="notLogin"><span>注册</span></a>
+					<span ng-show="!notLogin">您好:</span>
+					<a href="" ng-if="!notLogin"><span ng-bind='username'></span></a>
+					<a href="" ng-show="!notLogin" ng-click="logOut()"><span>退出登录</span></a>
+					<a id="tel" href=""><span class="icon-tablet"></span>手机APP</a>
+				</span>
+			</div>
+			<!--自动播放广告-->
+			<div class="imgList" ng-controller="guangCtrl">
+				<a ng-repeat="g in gArr" href=""><img ng-src="{{g}}"/></a>
+			</div>	
+			<!--logo和搜索-->
+			<div id="shopping">
+				<div id="logo-box">
+					<a href="#"><img src="images/logo.gif"/></a>
+				</div>
+				<div id="right-box">
+					<div id="search-box">
+						<input type="text" name="search" id="search" placeholder="某某商品打折"/>
+						<span class="icon-search"></span>
+					</div>
+					<div id="cart">
+						<span class="icon-shopping-cart icon-2x"></span>
+					</div>
+				</div>
+			</div>
+			<!--导航条菜单列表-->
+			<div id="menu-box">
+				<div id="menu-all">
+					<!--所有商品列表-->
+					<div class="tit_all">
+						<a href="">所有商品分类&emsp;
+							<span class=" icon-angle-down icon-large"></span>
+						</a>
+					</div>
+					<div class="tit_list" ng-controller="productCtrl">						
+						<dl ng-repeat="p in pArr" ng-mouseenter="show = true" ng-mouseleave="show = false" ng-init="outerIndex = $index">
+							<dt class="tit_name">
+								<span class="{{p.iconLei}} markleft"></span>
+								<a href="">{{p.titName}}</a>
+								<span class="icon-angle-right icon-large markright"></span>
+							</dt>
+							<dd ng-show="show">
+								<div class="content-list">
+									<ul ng-repeat="l in p.contentList track by $index" ng-init="innerIndex = $index">
+										<li>
+											<div class="list_l"><a href="">{{l.listL}}</a></div>
+											<div class="list_r" >
+												<a href="" ng-repeat="r in l.listR track by $index">{{r}}</a>
+											</div>
+										</li>										
+									</ul>
+								</div>
+							</dd>
+						</dl>																	
+					</div>										
+				</div>
+				<div id="menu-list">
+					<ul>
+						<li><a href="">首页</a></li>
+						<li><a href="">全国配</a></li>
+						<li><a href="">每日鲜</a></li>
+						<li><a href="">礼品区</a></li>
+						<li><a href="">兑换区</a></li>
+						<li><a href="">促销</a></li>
+						<li><a href="">充值</a></li>
+					</ul>
+				</div>				
+			</div>
+									
+		</header>
+
+	</body>
+	<script src="js/header.js"></script>
+</html>
